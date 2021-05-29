@@ -7,7 +7,6 @@ import HoodPage from '../pages/HoodPage';
 import NearmePage from '../pages/NearmePage';
 import ChatPage from '../pages/ChatPage';
 import MyPage from '../pages/MyPage';
-// import React from 'react';
 
 const Tabs = createBottomTabNavigator();
 
@@ -36,11 +35,6 @@ const TabNavigator = ({ navigation }) => {
               color={focused ? 'tomato' : 'grey'}
               size={26}
             />
-            //  <AntDesign
-            //    name={AntName}
-            //    color={focused ? 'tomato' : 'grey'}
-            //    size={26}
-            // />
           );
         },
       })}

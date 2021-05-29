@@ -19,7 +19,7 @@ export async function getCateData() {
 }
 
 // addhomepage
-export async function secondhandpost(title, contents, price) {
+export async function secondhandpost(data) {
 	try {
 		console.log("성공")
 		const token = await AsyncStorage.getItem('session');
@@ -30,10 +30,7 @@ export async function secondhandpost(title, contents, price) {
 				authorization: token
 			},
 			data: {
-				title: title,
-				contents: contents,
-				price: price,
-				images: []
+				data
 			},
 		});
 		console.log("성공")
@@ -43,3 +40,21 @@ export async function secondhandpost(title, contents, price) {
 		Alert.alert(error);
 	}
 }
+
+export async function imageUpload(blob) {
+	const token = await AsyncStorage.getItem('session');
+	const result = await axios({
+		method: 'post',
+		url: host + '/image',
+		headers: {
+			authorization: token
+		},
+		Formdata: blob
+	})
+	const imageUrl = URL.createObjectURL(blob)
+	console.log(imageUrl);
+	blob.close();
+  
+	return result;
+  };
+  

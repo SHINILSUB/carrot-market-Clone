@@ -14,7 +14,7 @@ import {
   Button,
 } from 'native-base';
 
-const loading = require('../assets/loading.gif');
+const loading = require('../assets/Loading.gif');
 const tempImage =
   'https://firebasestorage.googleapis.com/v0/b/sparta-study-plus.appspot.com/o/lecture%2F6-min.png?alt=media&token=bbc87679-4084-40ad-b6cd-01e808983fa4';
 
@@ -30,36 +30,30 @@ export default function HomeAddPage({ navigation }) {
 
   const upload = async () => {
     console.log(title, contents, price);
-    // console.log('업로드 준비중!');
-    // setProgress(true);
-    // const currentUser = firebase.auth().currentUser;
-    // let date = new Date();
-    // let getTime = date.getTime();
-    // let data = {
-    //   title: title,
-    //   author: currentUser.email,
-    //   desc: content,
-    //   image: image,
-    //   date: getTime,
-    //   uid: currentUser.uid,
-    // };
-    // const response = await fetch(imageUri);
-    // const blob = await response.blob();
-    // const imageUrl = await imageUpload(blob, getTime);
-    // data.image = imageUrl;
-    // let result = await addDiary(data);
-    // if (result) {
-    //   Alert.alert('글이 성공적으로 등록되었습니다!');
-    //   setTitle('');
-    //   setContent('');
-    //   setImage(tempImage);
-    //   setImageUri('');
-    //   setProgress(false);
-    // }else {
-    //   setProgress(false);
-    // }
-
-    await secondhandpost(title, contents, price, images);
+    console.log('업로드 준비중!');
+    setProgress(true);
+    let data = {
+      title: title,
+      contents: contents,
+      price: price,
+      image: image
+      
+    };
+    const response = await fetch(imageUri);
+    const blob = await response.blob();
+    const imageUrl = await imageUpload(blob);
+    data.image = imageUrl;
+    let result = await secondhandpost(data);
+    if (result) {
+      Alert.alert('글이 성공적으로 등록되었습니다!');
+      setTitle('');
+      setContent('');
+      setImage(tempImage);
+      setImageUri('');
+      setProgress(false);
+    }else {
+      setProgress(false);
+    }
   };
 
 

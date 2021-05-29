@@ -20,8 +20,7 @@ export default function HomeDetail(navigation) {
   }
 
   return (
-    <Container style={styles.container}
-    >
+    <Container style={styles.container}>
        <View>
       {/* <ScrollView> */}
         {categories.map((category, i) =>{
